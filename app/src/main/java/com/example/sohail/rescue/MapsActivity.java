@@ -233,6 +233,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 t.interrupt();
             }
             t=null;
+            isRunning = false;
             if(MyMarker != null){
                 MyMarker.remove();
             }
@@ -508,6 +509,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     .build();
 
             JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            assert scheduler != null;
             int resultCode = scheduler.schedule(info);
             if (resultCode == JobScheduler.RESULT_SUCCESS) {
                 Toast.makeText(this,"Job Scheduled",Toast.LENGTH_SHORT).show();
@@ -528,6 +530,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void cancelJob(View v) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
             JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+            assert scheduler != null;
             scheduler.cancel(123);
             Toast.makeText(this,"Job Canceled",Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Job cancelled");
@@ -1503,7 +1506,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 LatLng latLng = new LatLng(latitude,longitude);
 //                MarkerOptions options = new MarkerOptions().position(latLng).snippet(namE);
-                MarkerOptions options = new MarkerOptions().title("You"+namE).position(new LatLng(latitude,longitude)).icon(BitmapDescriptorFactory
+                MarkerOptions options = new MarkerOptions().title("You: "+namE).position(new LatLng(latitude,longitude)).icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
@@ -1554,7 +1557,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                         }
 
                                         LatLng latLng = new LatLng(latitude,longitude);
-                                        MarkerOptions options = new MarkerOptions().position(latLng).title("You"+namE).icon(BitmapDescriptorFactory
+                                        MarkerOptions options = new MarkerOptions().position(latLng).title("You: "+namE).icon(BitmapDescriptorFactory
                                                 .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
                                             // Do something for lollipop and above versions
@@ -1562,7 +1565,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                             if(bitmap!=null){
                                                 options.icon(BitmapDescriptorFactory.fromBitmap(bitmap));
                                                 options.anchor(0.5f, 0.907f);
-                                                MyMarker = mMap.addMarker(options);
+                                                if(t != null){
+                                                    MyMarker = mMap.addMarker(options);
+                                                }
+                                                if(t == null){
+                                                    MyMarker.remove();
+                                                }
                                                 hashMapme.put(MyMarker,"BLUE");
 //                                            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 //                                            mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
@@ -1591,6 +1599,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     t.start();
                     isRunning=true;
                 }
+
+//                if(t == null){
+//                    t.start();
+//                    isRunning= true;
+//                }
 
 
 
