@@ -1209,10 +1209,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             String k = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("MapStyle", "defaultStringIfNothingFound");
             switch (k) {
                 case "Navybluemap":
-                    drawable = getResources().getDrawable(R.drawable.locaterwhite);
+                    drawable = getResources().getDrawable(R.drawable.whitestrip);
                     break;
                 case "dark":
-                    drawable = getResources().getDrawable(R.drawable.locaterwhite);
+                    drawable = getResources().getDrawable(R.drawable.whitestrip);
                     break;
                 case "normal":
                     drawable = getResources().getDrawable(R.drawable.locateroblue);
