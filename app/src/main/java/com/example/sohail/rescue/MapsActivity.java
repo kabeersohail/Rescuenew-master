@@ -1503,7 +1503,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 LatLng latLng = new LatLng(latitude,longitude);
 //                MarkerOptions options = new MarkerOptions().position(latLng).snippet(namE);
-                MarkerOptions options = new MarkerOptions().title(namE).position(new LatLng(latitude,longitude)).snippet("You").icon(BitmapDescriptorFactory
+                MarkerOptions options = new MarkerOptions().title("You"+namE).position(new LatLng(latitude,longitude)).icon(BitmapDescriptorFactory
                         .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
@@ -1554,7 +1554,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                         }
 
                                         LatLng latLng = new LatLng(latitude,longitude);
-                                        MarkerOptions options = new MarkerOptions().position(latLng).title(namE).snippet("You").icon(BitmapDescriptorFactory
+                                        MarkerOptions options = new MarkerOptions().position(latLng).title("You"+namE).icon(BitmapDescriptorFactory
                                                 .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
                                             // Do something for lollipop and above versions
