@@ -538,6 +538,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (ContextCompat.checkSelfPermission(MapsActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(MapsActivity.this,"Restart app",Toast.LENGTH_SHORT).show();
 //                permissionGranted = false;
             // Permission is not granted
             // Should we show an explanation?

@@ -1,6 +1,11 @@
 package com.example.sohail.rescue;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,22 +14,56 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.HashMap;
 
 public class WelcomeGuide extends AppCompatActivity {
     public static GoogleApiClient welcomeGuideApiClient;
     ViewPager viewPager;
+    private static final int MY_LOCATION_PERMISSION = 101;
     TextView[] textView;
     LinearLayout linearLayout;
     SliderAdapter sliderAdapter;
     Button javaback,javanext;
     int currentpage;
     int i = 0;
+    static int visited = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_guide);
+        visited++;
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putInt("VisitedCount",visited).apply();
+
+        if (ContextCompat.checkSelfPermission(WelcomeGuide.this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+//                permissionGranted = false;
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(WelcomeGuide.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(WelcomeGuide.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_LOCATION_PERMISSION);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            finish();
+                startActivity(new Intent(WelcomeGuide.this,MapsActivity.class));
+            // Permission has already been granted
+        }
 
         viewPager = findViewById(R.id.XmlPager);
         linearLayout = findViewById(R.id.XmlDots);

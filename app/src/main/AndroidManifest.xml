@@ -79,13 +79,13 @@
         <service
             android:name=".HelloService"
             android:enabled="true" />
-        <service android:name=".ExampleJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            />
-        <service android:name=".ListenToDatabaseService"
+        <service
+            android:name=".ExampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+            android:name=".ListenToDatabaseService"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            />
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <receiver
             android:name=".SensorRestarterBroadcastReceiver"
@@ -98,9 +98,8 @@
         </receiver>
 
         <activity android:name=".Settings" />
-        <activity android:name=".Markers">
-
-        </activity>
+        <activity android:name=".Markers"></activity>
+        <activity android:name=".ChangingMap"></activity>
     </application>
 
 </manifest>

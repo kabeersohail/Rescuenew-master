@@ -85,15 +85,16 @@ public class Settings extends AppCompatActivity {
     }
 
     public void navybluelowsdk(View view) {
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("MapStyle","Navybluemap").apply();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
-            // Do something for lollipop and above versions
-            finishAndRemoveTask();
-            this.finishAffinity();
-        } else{
-            this.finishAffinity();
-            // do something for phones running an SDK before lollipop
-        }
+        PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("MapStyle","Navybluemap").apply();
+        startActivity(new Intent(Settings.this,ChangingMap.class));
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+//            // Do something for lollipop and above versions
+//            finishAndRemoveTask();
+//            this.finishAffinity();
+//        } else{
+//            this.finishAffinity();
+//            // do something for phones running an SDK before lollipop
+//        }
 //        Marker marker = MapsActivity.isPresent.get("isPresent");
 //        if(marker != null){
 //            marker.remove();
@@ -104,21 +105,22 @@ public class Settings extends AppCompatActivity {
 //        Intent i = getBaseContext().getPackageManager()
 //                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
 //        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
 //        startActivity(i);
     }
 
     public void darklowsdk(View view) {
+        startActivity(new Intent(Settings.this,ChangingMap.class));
         PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("MapStyle","dark").apply();
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
-            // Do something for lollipop and above versions
-            finishAndRemoveTask();
-            this.finishAffinity();
-        } else{
-            this.finishAffinity();
-            // do something for phones running an SDK before lollipop
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+//            // Do something for lollipop and above versions
+//            finishAndRemoveTask();
+//            this.finishAffinity();
+//        } else{
+//            this.finishAffinity();
+//            // do something for phones running an SDK before lollipop
+//        }
 
 //        Marker marker = MapsActivity.isPresent.get("isPresent");
 //        if(marker != null){
@@ -128,21 +130,22 @@ public class Settings extends AppCompatActivity {
 //        Intent i = getBaseContext().getPackageManager()
 //                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
 //        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
 //        startActivity(i);
     }
 
     public void normallowsdk(View view) {
+        startActivity(new Intent(Settings.this,ChangingMap.class));
         PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("MapStyle","normal").apply();
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
-            // Do something for lollipop and above versions
-            finishAndRemoveTask();
-            this.finishAffinity();
-        } else{
-            this.finishAffinity();
-            // do something for phones running an SDK before lollipop
-        }
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+//            // Do something for lollipop and above versions
+//            finishAndRemoveTask();
+//            this.finishAffinity();
+//        } else{
+//            this.finishAffinity();
+//            // do something for phones running an SDK before lollipop
+//        }
 //        Marker marker = MapsActivity.isPresent.get("isPresent");
 //        if(marker != null){
 //            marker.remove();
@@ -151,7 +154,7 @@ public class Settings extends AppCompatActivity {
 //        Intent i = getBaseContext().getPackageManager()
 //                .getLaunchIntentForPackage( getBaseContext().getPackageName() );
 //        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
 //        startActivity(i);
     }
 }

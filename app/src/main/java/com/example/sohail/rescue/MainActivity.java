@@ -2,6 +2,7 @@ package com.example.sohail.rescue;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -75,8 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
-                    startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                    int visited = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getInt("Visited",0);
+                    if(visited>0){
+                        startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                    }
+                    startActivity(new Intent(MainActivity.this,WelcomeGuide.class));
                     //Signed in
+
                 }
                 else {
                     //Signed out
@@ -86,13 +92,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//        UpdateUI(currentUser);
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        UpdateUI(currentUser);
+    }
 
     @Override
     protected void onResume() {
