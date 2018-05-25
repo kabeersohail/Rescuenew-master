@@ -157,4 +157,10 @@ public class Settings extends AppCompatActivity {
 //        Toast.makeText(Settings.this,"Restart app",Toast.LENGTH_SHORT).show();
 //        startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Settings.this,MapsActivity.class));
+    }
 }

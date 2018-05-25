@@ -229,6 +229,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         if(id == R.id.settings){
+            if(t != null){
+                t.interrupt();
+            }
+            t=null;
+            if(MyMarker != null){
+                MyMarker.remove();
+            }
+            finish();
             startActivity(new Intent(MapsActivity.this,Settings.class));
         }
 
@@ -1546,7 +1554,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                         }
 
                                         LatLng latLng = new LatLng(latitude,longitude);
-                                        MarkerOptions options = new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory
+                                        MarkerOptions options = new MarkerOptions().position(latLng).title(namE).snippet(namE).icon(BitmapDescriptorFactory
                                                 .defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
                                             // Do something for lollipop and above versions
