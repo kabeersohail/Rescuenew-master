@@ -1217,6 +1217,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 case "normal":
                     drawable = getResources().getDrawable(R.drawable.locateroblue);
                     break;
+                default: drawable = getResources().getDrawable(R.drawable.locateroblue);
             }
             assert drawable != null;
             drawable.setBounds(0, 0, dpo(62), dpo(76));
@@ -1607,8 +1608,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(home));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(gps.getLatitude(),gps.getLongitude()), 17.0f));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+//                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(gps.getLatitude(),gps.getLongitude()), 17.0f));
             }
 
         }
